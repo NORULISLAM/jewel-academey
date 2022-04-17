@@ -2,26 +2,37 @@ import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
+    const nameRef = useRef('');
     const navigate = useNavigate();
 
-    const handleSubmit = event => {
+    const navigateLogin = event => {
+        navigate('/login');
+    }
+
+    const handleRegister = event => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        console.log(email, password);
+        const name = nameRef.current.value;
+        console.log(email, password, name);
     }
 
-    const navigateRegister = event => {
-        navigate('/register');
-    }
+
+
+
 
     return (
         <div className='container w-50 mx-auto'>
             <h2 className='text-primary text-center mt-4'>Please Login </h2>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleRegister}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Your Name</Form.Label>
+                    <Form.Control ref={nameRef} type="text" placeholder="Your Name" />
+
+                </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
@@ -41,9 +52,10 @@ const Login = () => {
                     Submit
                 </Button>
             </Form>
-            <p>Create new account ? <Link to='/register' className='text-danger pe-auto text-decoration-none' onClick={navigateRegister}>Please Register</Link></p>
+            <p>Already an Account ? <Link to='/login' className='text-danger pe-auto text-decoration-none' onClick={navigateLogin}>Please Login</Link></p>
+
         </div>
     );
 };
 
-export default Login;
+export default Register;

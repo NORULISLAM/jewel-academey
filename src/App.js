@@ -6,6 +6,10 @@ import Footer from './Component/Footer/Footer';
 import Header from './Component/Header/Header';
 
 import Home from './Component/Home/Home';
+import Login from './Component/Login/Login';
+import NotFound from './Component/NotFound/NotFound';
+import Register from './Component/Register/Register';
+import ServiceDetail from './Component/ServiceDetail/ServiceDetail';
 
 function App() {
   return (
@@ -14,9 +18,12 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
+        <Route path='/service/:serviceId' element={<ServiceDetail></ServiceDetail>}></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/about' element={<About></About>}></Route>
-
+        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
