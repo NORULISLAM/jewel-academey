@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import logo from '../../images/logo.png';
+import { Routes, Route, Link } from "react-router-dom";
 
 const Header = () => {
     return (
@@ -26,7 +27,7 @@ const Header = () => {
                         </Nav>
                         <Nav>
                             <Nav.Link href="#contact">Contact</Nav.Link>
-                            <Nav.Link eventKey={2} href="#blog">
+                            <Nav.Link eventKey={2} to="/blog">
                                 Blog
                             </Nav.Link>
                         </Nav>
