@@ -13,8 +13,8 @@ const Header = () => {
         signOut(auth);
     }
     return (
-        <div>
-            <Navbar collapseOnSelect expand="lg" sticky='top' bg="primary" variant="dark">
+        <div className='mb-5'>
+            <Navbar collapseOnSelect expand="lg" fixed='top' bg="primary" variant="dark">
                 <Container>
                     <Navbar.Brand as={Link} to="/">
                         <img src={logo} height="40" alt="" />
@@ -37,16 +37,16 @@ const Header = () => {
                         <Nav>
                             <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
 
-                            {
-                                user ?
-                                    <Nav.Link as={Link} to="/singout">
-                                        Sign Out
-                                    </Nav.Link>
-                                    :
-                                    <Nav.Link as={Link} onClick={handlesignOut} to="/login">
-                                        Login
-                                    </Nav.Link>
-                            }
+                            {/* { */}
+                                // user ?
+                            <Nav.Link as={Link} to="/register">
+                                Sign Out
+                            </Nav.Link>
+                                    // :
+                            <Nav.Link as={Link} onClick={handlesignOut} to="/login">
+                                Login
+                            </Nav.Link>
+                            {/* } */}
 
 
 
