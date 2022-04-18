@@ -1,3 +1,4 @@
+import { sendEmailVerification, sendPasswordResetEmail } from 'firebase/auth';
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
@@ -8,9 +9,10 @@ const Login = () => {
 
     const [
         signInWithEmailAndPassword,
+        email,
         user,
-        loading,
-        error,
+        registered,
+
     ] = useSignInWithEmailAndPassword(auth);
 
     const emailRef = useRef('');
@@ -27,9 +29,18 @@ const Login = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         signInWithEmailAndPassword(email, password);
+        console.log(email, password)
     }
-    if (user) {
-        navigate(from, { replace: true });
+
+    const handlePasswordReset = () => {
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                console.log('email send')
+            })
+    }
+    if (registered) {
+        navigate('/home')
+        // navigate(from, { replace: true });
     }
     const navigateRegister = event => {
         navigate('/register');
@@ -51,8 +62,12 @@ const Login = () => {
                     <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
-                    Submit
+                <Button variant="link" type="submit">
+                    Forget password?
+                </Button>
+                <br />
+                <Button onClick={handlePasswordReset} variant="primary" type="submit">
+                    Log In
                 </Button>
             </Form>
             <p>Create new account ? <Link to='/register' className='text-danger pe-auto text-decoration-none' onClick={navigateRegister}>Please Register</Link></p>
