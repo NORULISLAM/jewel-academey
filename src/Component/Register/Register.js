@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
@@ -17,7 +17,11 @@ const Register = () => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
 
-
+    useEffect(() => {
+        if (error) {
+            setError('right password please');
+        }
+    }, [error])
     // const [
     //     createUserWithEmailAndPassword,
     //     user,
@@ -42,9 +46,7 @@ const Register = () => {
     // if (user) {
     //     navigate('/home');
     // }
-    if (error) {
-        setError('right password please');
-    }
+
     const handleRegister = event => {
 
         const form = event.currentTarget;
@@ -63,7 +65,7 @@ const Register = () => {
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                navigate("/home")
                 setEmail('');
                 setPassword('')
                 setName('')
