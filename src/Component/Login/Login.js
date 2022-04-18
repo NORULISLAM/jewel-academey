@@ -1,7 +1,7 @@
 import { sendEmailVerification, sendPasswordResetEmail } from 'firebase/auth';
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
@@ -18,6 +18,11 @@ const Login = () => {
 
 
     ] = useSignInWithEmailAndPassword(auth);
+
+    const [signInWithGoogle] =
+        useSignInWithGoogle(auth);
+    let errorElement;
+
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -62,6 +67,12 @@ const Login = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control onBlur={(event) => setPassword(event.target.value)} name='password' type="password" placeholder="Password" required />
                 </Form.Group>
+
+
+                <Button onClick={() => signInWithGoogle()} variant="primary" type="submit">
+                    Google Sing In
+                </Button>
+                {errorElement}
 
                 <Button variant="link" type="submit">
                     Forget password?

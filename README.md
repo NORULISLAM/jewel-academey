@@ -1,6 +1,15 @@
 # jewel academey
 
-This project was bootstrapped with [jewel academey](https://github.com/facebook/create-react-app).
+live link [jewel academey](https://github.com/facebook/create-react-app).
+
+
+- using brostrap
+- home (flowing the navbar all details show you.)
+- reviews (reviews details 6 person user)
+- blogs (answer the quation)
+
+
+
 
 ## Available Scripts
 
