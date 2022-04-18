@@ -1,6 +1,6 @@
 # jewel academey
 
-live link [jewel academey](https://github.com/facebook/create-react-app).
+live link [jewel academey](https://regal-yeot-e26758.netlify.app/login).
 
 
 - using brostrap
